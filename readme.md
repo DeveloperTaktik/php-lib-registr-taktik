@@ -46,13 +46,13 @@ if ($f['school']['uid'] > '') {
 }
 ```
 # Configuration array
-| Key            | Name                                   | Type    | Note               |
-|----------------|----------------------------------------|---------|--------------------|
-| secret_key     | Unique secret key for your application | string  | 16 characters      |
-| x_taktik_token | Unique token for your application      | string  | 64 characters      |
-| bearer         | JWT token from login or registration   | JWT key |                    |
-| version        | API version                            | string  | only '1.0' allowed |
-| dev            | Choose between live or dev server      | boolean | true or false      |
+| Key            | Name                                   | Required                     | Type    | Note               |
+|----------------|----------------------------------------|------------------------------|---------|--------------------|
+| secret_key     | Unique secret key for your application | Yes - Login / Register       | string  | 16 characters      |
+| x_taktik_token | Unique token for your application      | Yes - Login / Register       | string  | 64 characters      |
+| bearer         | JWT token from login or registration   | Yes - GET, POST, PUT, DELETE | JWT key |                    |
+| version        | API version                            | No                           | string  | only '1.0' allowed |
+| dev            | Choose between live or dev server      | No                           | boolean | true or false      |
 ### Example usage
 ```php
 include '../../vendor/autoload.php';
