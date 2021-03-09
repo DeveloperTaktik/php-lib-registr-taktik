@@ -52,7 +52,7 @@ if ($f['school']['uid'] > '') {
 | x_taktik_token | Unique token for your application      | string  | 64 characters      |
 | bearer         | JWT token from login or registration   | JWT key |                    |
 | version        | API version                            | string  | only '1.0' allowed |
-| dev            | Choose between live or dev server      | bool    | true or false      |
+| dev            | Choose between live or dev server      | boolean | true or false      |
 ### Example usage
 ```php
 include '../../vendor/autoload.php';
