@@ -1,0 +1,21 @@
+{
+    "name": "taktik/taktik-registr",
+    "description": "PHP lib for Register Taktik API project.",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Taktik Development Team",
+            "email": "developer@etaktik.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.3",
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "TaktikRegistr": "src/"
+        }
+    }
+}
