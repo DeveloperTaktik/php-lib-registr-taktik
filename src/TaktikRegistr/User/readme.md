@@ -7,7 +7,46 @@ or
 ```php
 use TaktikRegistr\TaktikRegistr;
 ```
+### Register user [API](https://registr.etaktik.cz/docs#operation/register)
+```php
+$conf = [
+    'secret_key' => 'YOUR_SECRET_KEY',
+    'x_taktik_token' => 'YOUR_X_TAKTIK_TOKEN'
+];
 
+$api = new TaktikRegistr\TaktikRegistr($conf);
+
+$data = [
+    "email" => "johnjohnson1@etaktik.cz",
+    "password" => "myverylongpassword",
+    "phone" => "123456789",
+    "gender" => 1,
+    "firstname" => "John",
+    "lastname" => "Johnson",
+    "degreeBefore" => "Mgr.",
+    "degreeAfter" => "DiS."
+];
+
+$user = $api->user()->register($data);
+
+if ($user->getSuccessCode() === 226) {
+    echo "User already exists with same email and password.";
+    exit;
+}
+
+if ($user->getErrorCode() === 409) {
+    echo "User already exists with different password.";
+    exit;
+}
+
+if ($user->getErrorCode() === 406) {
+    echo "Required fields not set.";
+    exit;
+}
+
+//You can save it to cookie, for later use.
+setcookie("user_token", $user->getToken(), $user->getExpiration(), "/");
+```
 ### Login user [API](https://registr.etaktik.cz/docs#operation/login)
 ```php
 $conf = [
@@ -65,7 +104,7 @@ $api = new TaktikRegistr\TaktikRegistr($conf);
 
 $uid = 'USER_UNIQUE_ID';
 $data = [
-    'email' => 'johnjohnson1@etaktik.cz',
+    "email" => "johnjohnson1@etaktik.cz",
     "password" => "myverylongpassword",
     "phone" => "123456789",
     "gender" => 1,
@@ -91,7 +130,7 @@ $api = new TaktikRegistr\TaktikRegistr($conf);
 
 $uid = 'USER_UNIQUE_ID';
 $data = [
-    'email' => 'johnjohnson1@etaktik.cz',
+    "email" => "johnjohnson1@etaktik.cz",
     "password" => "myverylongpassword",
     "phone" => "123456789",
     "gender" => 1,

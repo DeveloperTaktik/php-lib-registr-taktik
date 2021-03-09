@@ -67,7 +67,16 @@ class Writer
         $body = substr($output, $header_size);
 
         $header = explode("\r\n", $header);
-        if ($header[0] === 'HTTP/1.1 200 OK' || $header[0] === 'HTTP/1.1 201 Created') {
+
+        $arrConfirm = [
+            200 => 'HTTP/1.1 200 OK',
+            201 => 'HTTP/1.1 201 Created',
+            226 => 'HTTP/1.1 226 IM Used'
+        ];
+        if (in_array($header[0], $arrConfirm)) {
+            $body = json_decode($body);
+            $body->successCode = array_keys($arrConfirm, $header[0])[0];
+            $body = json_encode($body);
             $output = $body;
         } else {
             $output = json_encode(['errorCode' => (int)explode(' ', $header[0])[1]]);

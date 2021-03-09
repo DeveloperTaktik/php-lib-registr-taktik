@@ -35,6 +35,19 @@ class User
     }
 
     /**
+     * @param array $body
+     * @return Entity|null
+     */
+    public function register(array $body = []): ?Entity
+    {
+        $headers = ['X-Taktik-Token: '.$this->x_taktik_token, 'Content-Type: application/json'];
+        $writer = new Writer('users/register/', 'POST', $this->version, $this->dev, $headers, $body);
+        $user = json_decode($writer->write());
+        $user = $this->decode($user);
+        return new Entity($user);
+    }
+
+    /**
      * @param string $login
      * @param string $password
      * @return Entity|null
@@ -45,20 +58,9 @@ class User
         $body = ['login' => $login, 'password' => $password];
         $writer = new Writer('users/login/', 'POST', $this->version, $this->dev, $headers, $body);
         $user = json_decode($writer->write());
-
-        if (isset($user->token)) {
-            $reader = new Reader($user->token, $this->secret_key);
-            $decoded = $reader->read();
-            if (isset($decoded->exp)) {
-                $user->expiration = $decoded->exp;
-            }
-            if (isset($decoded->data->uid)) {
-                $user->uid = $decoded->data->uid;
-            }
-        }
+        $user = $this->decode($user);
         return new Entity($user);
     }
-
 
     /**
      * @param string $uid - Unique ID of user.
@@ -107,5 +109,20 @@ class User
         $writer = new Writer('users/insert/', 'POST', $this->version, $this->dev, $headers, $body);
         $user = json_decode($writer->write());
         return new Entity($user);
+    }
+
+    private function decode(object $user)
+    {
+        if (isset($user->token)) {
+            $reader = new Reader($user->token, $this->secret_key);
+            $decoded = $reader->read();
+            if (isset($decoded->exp)) {
+                $user->expiration = $decoded->exp;
+            }
+            if (isset($decoded->data->uid)) {
+                $user->uid = $decoded->data->uid;
+            }
+        }
+        return $user;
     }
 }

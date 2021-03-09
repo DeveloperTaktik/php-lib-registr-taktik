@@ -59,6 +59,11 @@ class Entity
         return isset($this->user->errorCode) ? $this->user->errorCode : 0;
     }
 
+    public function getSuccessCode(): int
+    {
+        return isset($this->user->successCode) ? $this->user->successCode : 0;
+    }
+
     public function getExpiration(): int
     {
         return isset($this->user->expiration) ? $this->user->expiration : 0;
