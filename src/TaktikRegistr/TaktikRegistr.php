@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TaktikRegistr;
 
+use TaktikRegistr\School\School;
 use TaktikRegistr\User\User;
 
 class TaktikRegistr
@@ -30,6 +31,17 @@ class TaktikRegistr
         $this->bearer = isset($conf['bearer']) ? $conf['bearer'] : '';
         $this->version = isset($conf['version']) ? $conf['version'] : '1.0';
         $this->dev = isset($conf['dev']) ? $conf['dev'] : false;
+    }
+
+    public function school(): School
+    {
+        return new School(
+            $this->secret_key,
+            $this->x_taktik_token,
+            $this->bearer,
+            $this->version,
+            $this->dev
+        );
     }
 
     public function user(): User

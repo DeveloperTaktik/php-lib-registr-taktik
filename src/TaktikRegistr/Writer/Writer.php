@@ -75,6 +75,9 @@ class Writer
         ];
         if (in_array($header[0], $arrConfirm)) {
             $body = json_decode($body);
+            if (empty($body)) {
+                $body = new \stdClass();
+            }
             $body->successCode = array_keys($arrConfirm, $header[0])[0];
             $body = json_encode($body);
             $output = $body;
