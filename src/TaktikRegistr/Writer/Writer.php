@@ -46,7 +46,7 @@ class Writer
 
     public function write()
     {
-        $host = $this->dev ? 'http://registr-etaktik.test/' : 'https://registr.etaktik.cz/';
+        $host = $this->dev ? 'https://dev-registr.etaktik.cz/' : 'https://registr.etaktik.cz/';
         $url = $host . $this->version . '/' . $this->url;
 
         $ch = curl_init();
