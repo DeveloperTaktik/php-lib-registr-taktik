@@ -5,7 +5,7 @@ This PHP library allows you to work with Taktik Registr API. [Full API documenta
 
 ## Install
 ```
-composer require taktik/taktik-registr
+composer require taktik/php-lib-registr
 ```
 
 ## Versions
