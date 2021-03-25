@@ -63,6 +63,21 @@ class User
     }
 
     /**
+     * @param string $email
+     * @param string $facebookId
+     * @return Entity|null
+     */
+    public function facebook(string $email, string $facebookId): ?Entity
+    {
+        $headers = ['X-Taktik-Token: '.$this->x_taktik_token, 'Content-Type: application/json'];
+        $body = ['email' => $email, 'facebookId' => $facebookId];
+        $writer = new Writer('users/facebook/', 'POST', $this->version, $this->dev, $headers, $body);
+        $user = json_decode($writer->write());
+        $user = $this->decode($user);
+        return new Entity($user);
+    }
+
+    /**
      * @param string $uid - Unique ID of user.
      * @return Entity|null
      */

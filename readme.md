@@ -12,6 +12,7 @@ composer require taktik/php-lib-registr
 | State       | Version | Branch   | PHP      |
 |-------------|---------|----------|----------|
 | stable      | `1.0`  | `master` | `>= 7.3` |
+| dev      | `dev-master`  | `master` | `>= 7.3` |
 
 ## Need to be prepared
 Please prepare a simple interface on your project for data synchronization. 
@@ -61,7 +62,7 @@ $conf = [
     'secret_key' => 'YOUR_SECRET_KEY',
     'x_taktik_token' => 'YOUR_X_TAKTIK_TOKEN',
     'bearer' => 'YOUR_GENERATED_TOKEN_FROM_LOGIN',
-    'version' => '1.0'
+    'version' => '1.0',
     'dev' => true
 ];
 ```
