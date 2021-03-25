@@ -1,2 +1,4 @@
 .idea
 examples
+composer.phar
+composer.lock
