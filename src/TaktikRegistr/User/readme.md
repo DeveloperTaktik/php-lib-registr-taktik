@@ -84,6 +84,29 @@ echo "User UID: ".$user->getUID();
 //You can save it to cookie, for later use.
 setcookie("user_token", $user->getToken(), $user->getExpiration(), "/");
 ```
+### Google login [API](https://registr.etaktik.cz/docs#operation/google)
+```php
+$conf = [
+    'secret_key' => 'YOUR_SECRET_KEY',
+    'x_taktik_token' => 'YOUR_X_TAKTIK_TOKEN'
+];
+
+$api = new TaktikRegistr\TaktikRegistr($conf);
+
+$user = $api->user()->google('email', 'googleId');
+
+if ($user->getErrorCode() === 409) {
+    echo "User already exists, but not with this Google App.";
+    exit;
+}
+
+echo "User token: ".$user->getToken()."<br />";
+echo "Token expiration date: ".date('j.n.Y H:i:s', $user->getExpiration())."<br />";
+echo "User UID: ".$user->getUID();
+
+//You can save it to cookie, for later use.
+setcookie("user_token", $user->getToken(), $user->getExpiration(), "/");
+```
 ### Get user data [API](https://registr.etaktik.cz/docs#operation/get-user)
 ```php
 $conf = [

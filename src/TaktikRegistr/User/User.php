@@ -78,6 +78,21 @@ class User
     }
 
     /**
+     * @param string $email
+     * @param string $googleId
+     * @return Entity|null
+     */
+    public function google(string $email, string $googleId): ?Entity
+    {
+        $headers = ['X-Taktik-Token: '.$this->x_taktik_token, 'Content-Type: application/json'];
+        $body = ['email' => $email, 'googleId' => $googleId];
+        $writer = new Writer('users/google/', 'POST', $this->version, $this->dev, $headers, $body);
+        $user = json_decode($writer->write());
+        $user = $this->decode($user);
+        return new Entity($user);
+    }
+
+    /**
      * @param string $uid - Unique ID of user.
      * @return Entity|null
      */
