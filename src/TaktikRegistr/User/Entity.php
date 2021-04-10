@@ -54,6 +54,16 @@ class Entity
         return isset($this->user->degreeAfter) ? $this->user->degreeAfter : '';
     }
 
+    public function getCountry(): string
+    {
+        return isset($this->user->country) ? $this->user->country : '';
+    }
+
+    public function getUIDSchool(): string
+    {
+        return isset($this->user->uidSchool) ? $this->user->uidSchool : '';
+    }
+
     public function getErrorCode(): int
     {
         return isset($this->user->errorCode) ? $this->user->errorCode : 0;

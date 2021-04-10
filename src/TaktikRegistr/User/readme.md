@@ -24,7 +24,9 @@ $data = [
     "firstname" => "John",
     "lastname" => "Johnson",
     "degreeBefore" => "Mgr.",
-    "degreeAfter" => "DiS."
+    "degreeAfter" => "DiS.",
+    "country" => "cz",
+    "uidSchool" => "e7urzbVMhIf2TwywnzusCN9YesBghB2ywofzPwiMJG4RATvlayHKaQvT5a8INF4XYXWncs2Rb6cbPyzaMe8iU5QQwJENRrKPmJ9RpMtcCDRRQNTzE1FdcPnNcZB9O02q"
 ];
 
 $user = $api->user()->register($data);
@@ -144,6 +146,8 @@ $firstname = $user->getFirstName();
 $lastname = $user->getLastName();
 $degreeBefore = $user->getDegreeBefore();
 $degreeAfter = $user->getDegreeAfter();
+$country = $user->getCountry();
+$uidSchool = $user->getUIDSchool();
 ```
 ### Delete user [API](https://registr.etaktik.cz/docs#operation/delete-user)
 ```php
@@ -175,7 +179,9 @@ $data = [
     "firstname" => "John",
     "lastname" => "Johnson",
     "degreeBefore" => "Mgr.",
-    "degreeAfter" => "DiS."
+    "degreeAfter" => "DiS.",
+    "country" => "cz",
+    "uidSchool" => "e7urzbVMhIf2TwywnzusCN9YesBghB2ywofzPwiMJG4RATvlayHKaQvT5a8INF4XYXWncs2Rb6cbPyzaMe8iU5QQwJENRrKPmJ9RpMtcCDRRQNTzE1FdcPnNcZB9O02q"
 ];
 
 $user = $api->user()->update($uid, $data);
@@ -201,7 +207,9 @@ $data = [
     "firstname" => "John",
     "lastname" => "Johnson",
     "degreeBefore" => "Mgr.",
-    "degreeAfter" => "DiS."
+    "degreeAfter" => "DiS.",
+    "country" => "cz",
+    "uidSchool" => "e7urzbVMhIf2TwywnzusCN9YesBghB2ywofzPwiMJG4RATvlayHKaQvT5a8INF4XYXWncs2Rb6cbPyzaMe8iU5QQwJENRrKPmJ9RpMtcCDRRQNTzE1FdcPnNcZB9O02q"
 ];
 
 $user = $api->user()->insert($data);
