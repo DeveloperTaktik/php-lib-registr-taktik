@@ -61,6 +61,25 @@ $user = $api->user()->login('login', 'password');
 //You can save it to cookie, for later use.
 setcookie("user_token", $user->getToken(), $user->getExpiration(), "/");
 ```
+### Lost password [API](https://registr.etaktik.cz/docs#operation/lost-password)
+```php
+$conf = [
+    'secret_key' => 'YOUR_SECRET_KEY',
+    'x_taktik_token' => 'YOUR_X_TAKTIK_TOKEN'
+];
+
+$api = new TaktikRegistr\TaktikRegistr($conf);
+
+$user = $api->user()->lostPassword('email', 'redirect_url');
+
+if ($user->getErrorCode() > 0) {
+    echo "Wops, something went wrong :) Here is the code: ".$user->getErrorCode();
+    exit;
+} else {
+    echo "Email has been send!";
+    exit;
+}
+```
 ### Facebook login [API](https://registr.etaktik.cz/docs#operation/facebook)
 ```php
 $conf = [

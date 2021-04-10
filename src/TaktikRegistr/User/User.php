@@ -64,6 +64,21 @@ class User
 
     /**
      * @param string $email
+     * @param string $redirectUrl
+     * @return Entity|null
+     */
+    public function lostPassword(string $email, string $redirectUrl): ?Entity
+    {
+        $headers = ['X-Taktik-Token: '.$this->x_taktik_token, 'Content-Type: application/json'];
+        $body = ['email' => $email, 'redirectUrl' => $redirectUrl];
+        $writer = new Writer('users/lost-password/', 'POST', $this->version, $this->dev, $headers, $body);
+        $user = json_decode($writer->write());
+        $user = $this->decode($user);
+        return new Entity($user);
+    }
+
+    /**
+     * @param string $email
      * @param string $facebookId
      * @return Entity|null
      */
