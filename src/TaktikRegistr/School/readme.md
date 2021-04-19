@@ -20,6 +20,10 @@ $school = $api->school()->get($uid);
 
 $uid = $school->getUID();
 $name = $school->getName();
+$street = $school->getStreet();
+$city = $school->getCity();
+$zip = $school->getZip();
+$cin = $school->getCin();
 ```
 ### Delete school [API](https://registr.etaktik.cz/docs#operation/delete-school)
 ```php
@@ -44,7 +48,11 @@ $api = new TaktikRegistr\TaktikRegistr($conf);
 
 $uid = 'SCHOOL_UNIQUE_ID';
 $data = [
-    "name" => "School from API"
+    'name' => 'School from API',
+    'street' => 'Street',
+    'city' => 'City',
+    'zip' => '12345',
+    'cin' => '123456789'
 ];
 
 $school = $api->school()->update($uid, $data);
@@ -61,9 +69,12 @@ $conf = [
 ];
 $api = new TaktikRegistr\TaktikRegistr($conf);
 
-$uid = 'SCHOOL_UNIQUE_ID';
 $data = [
-    "name" => "School from API"
+    'name' => 'School from API',
+    'street' => 'Street',
+    'city' => 'City',
+    'zip' => '12345',
+    'cin' => '123456789'
 ];
 
 $school = $api->school()->insert($data);

@@ -24,6 +24,26 @@ class Entity
         return isset($this->school->name) ? $this->school->name : '';
     }
 
+    public function getStreet(): string
+    {
+        return isset($this->school->street) ? $this->school->street : '';
+    }
+
+    public function getCity(): string
+    {
+        return isset($this->school->city) ? $this->school->city : '';
+    }
+
+    public function getZip(): string
+    {
+        return isset($this->school->zip) ? $this->school->zip : '';
+    }
+
+    public function getCin(): string
+    {
+        return isset($this->school->cin) ? $this->school->cin : '';
+    }
+
     public function getErrorCode(): int
     {
         return isset($this->school->errorCode) ? $this->school->errorCode : 0;
