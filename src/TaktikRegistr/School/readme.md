@@ -24,6 +24,8 @@ $street = $school->getStreet();
 $city = $school->getCity();
 $zip = $school->getZip();
 $cin = $school->getCin();
+$redizo = $school->getRedizo();
+$country = $school->getCountry();
 ```
 ### Delete school [API](https://registr.etaktik.cz/docs#operation/delete-school)
 ```php
@@ -52,7 +54,9 @@ $data = [
     'street' => 'Street',
     'city' => 'City',
     'zip' => '12345',
-    'cin' => '123456789'
+    'cin' => '123456789',
+    'redizo' => '123456789',
+    'country' => 'cz'
 ];
 
 $school = $api->school()->update($uid, $data);
@@ -74,7 +78,9 @@ $data = [
     'street' => 'Street',
     'city' => 'City',
     'zip' => '12345',
-    'cin' => '123456789'
+    'cin' => '123456789',
+    'redizo' => '123456789',
+    'country' => 'cz'
 ];
 
 $school = $api->school()->insert($data);

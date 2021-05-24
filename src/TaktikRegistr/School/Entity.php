@@ -44,6 +44,16 @@ class Entity
         return isset($this->school->cin) ? $this->school->cin : '';
     }
 
+    public function getRedizo(): string
+    {
+        return isset($this->school->redizo) ? $this->school->redizo : '';
+    }
+
+    public function getCountry(): string
+    {
+        return isset($this->school->country) ? $this->school->country : '';
+    }
+
     public function getErrorCode(): int
     {
         return isset($this->school->errorCode) ? $this->school->errorCode : 0;
