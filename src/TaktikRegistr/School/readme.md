@@ -27,6 +27,31 @@ $cin = $school->getCin();
 $redizo = $school->getRedizo();
 $country = $school->getCountry();
 ```
+### Search schools [API](https://registr.etaktik.cz/docs#operation/search-school)
+```php
+$conf = [
+    'bearer' => 'YOUR_GENERATED_TOKEN_FROM_LOGIN'
+];
+$api = new TaktikRegistr\TaktikRegistr($conf);
+
+$search = [
+    'query' => 'What i want to search',
+    'limit' => 50,
+    'page' => 1,
+];
+
+$schools = $api->school()->search($search);
+foreach ($schools as $school) {
+    $uid = $school->getUID();
+    $name = $school->getName();
+    $street = $school->getStreet();
+    $city = $school->getCity();
+    $zip = $school->getZip();
+    $cin = $school->getCin();
+    $redizo = $school->getRedizo();
+    $country = $school->getCountry();
+}
+```
 ### Delete school [API](https://registr.etaktik.cz/docs#operation/delete-school)
 ```php
 $conf = [

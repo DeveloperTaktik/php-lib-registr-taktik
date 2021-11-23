@@ -46,6 +46,26 @@ class School
     }
 
     /**
+     * @param array $body - ['query' => '?', 'limit' => 50, 'page' => 1].
+     * @return array|null
+     */
+    public function search(array $body = []): ?array
+    {
+        $headers = ['Authorization: Bearer '.$this->bearer];
+        $writer = new Writer('schools/search/', 'POST', $this->version, $this->dev, $headers, $body);
+        $schools = json_decode($writer->write());
+        if (is_array($schools) && $schools->errorCode == 0) {
+            foreach ($schools as $key => $school) {
+                $schools[$key] = new Entity($school);
+            }
+        }
+        if ($schools->errorCode > 0) {
+            $schools = null;
+        }
+        return $schools;
+    }
+
+    /**
      * @param string $uid - Unique ID of school.
      * @return Entity|null
      */
