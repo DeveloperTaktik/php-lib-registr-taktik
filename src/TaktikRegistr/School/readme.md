@@ -27,10 +27,11 @@ $cin = $school->getCin();
 $redizo = $school->getRedizo();
 $country = $school->getCountry();
 ```
-### Search schools [API](https://registr.etaktik.cz/docs#operation/search-school)
+### Search active schools [API](https://registr.etaktik.cz/docs#operation/search-school)
 ```php
 $conf = [
-    'bearer' => 'YOUR_GENERATED_TOKEN_FROM_LOGIN'
+    'bearer' => 'YOUR_GENERATED_TOKEN_FROM_LOGIN',
+    'x_taktik_token' => 'YOUR_X_TAKTIK_TOKEN'
 ];
 $api = new TaktikRegistr\TaktikRegistr($conf);
 
